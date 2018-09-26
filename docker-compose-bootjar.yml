@@ -1,0 +1,14 @@
+
+version: '2'
+
+services:
+   member_house:
+     container_name: member_house
+     image: frolvlad/alpine-oraclejdk8:slim
+     restart: always
+     working_dir: /mnt
+     command: java -jar app.jar
+     ports:
+        - 443:8080
+     volumes:
+        - .:/mnt
