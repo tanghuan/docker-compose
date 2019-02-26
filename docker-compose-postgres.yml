@@ -1,8 +1,8 @@
 version: '3.5'
 
 networks:
-  cgland_kecloak:
-    name: cgland_kecloak
+  kecloak:
+    name: kecloak
 
 services:
   postgres:
@@ -11,11 +11,9 @@ services:
     restart: always
     ports:
       - 5432:5432
-    # volumes:
-    #   - ./data:/var/lib/mysql
     environment:
-      POSTGRES_USER: cgland
-      POSTGRES_PASSWORD: cgland2019
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
       POSTGRES_DB: keycloak
     networks:
-      - cgland_kecloak
+      - kecloak
