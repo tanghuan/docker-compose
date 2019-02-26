@@ -1,8 +1,8 @@
 version: '3.5'
 
 networks:
-  kecloak:
-    name: kecloak
+  keycloak:
+    name: keycloak
 
 services:
   postgres:
@@ -16,4 +16,4 @@ services:
       POSTGRES_PASSWORD: keycloak
       POSTGRES_DB: keycloak
     networks:
-      - kecloak
+      - keycloak
