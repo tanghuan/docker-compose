@@ -8,16 +8,16 @@ services:
     ports:
       - 8190:8080
     environment:
-      KEYCLOAK_USER: cgland
-      KEYCLOAK_PASSWORD: cgland2019
+      KEYCLOAK_USER: tanghuan
+      KEYCLOAK_PASSWORD: tanghuan
       DB_VENDOR: postgres
       DB_ADDR: postgres
       DB_PORT: 5432
       DB_DATABASE: keycloak
-      DB_USER: cgland
-      DB_PASSWORD: cgland2019
+      DB_USER: keycloak
+      DB_PASSWORD: keycloak
     networks:
-      - cgland_keycloak
+      - keycloak
     depends_on:
       - postgres
 
@@ -28,11 +28,11 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: cgland
-      POSTGRES_PASSWORD: cgland2019
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
       POSTGRES_DB: keycloak
     networks:
-      - cgland_keycloak
+      - keycloak
 
 networks:
-  cgland_keycloak:
+  keycloak:
