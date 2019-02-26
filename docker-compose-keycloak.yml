@@ -1,9 +1,9 @@
 version: '3.5'
 
 networks:
-  cgland_kecloak:
+  kecloak:
     external: true
-    name: cgland_kecloak
+    name: kecloak
 
 services:
   keycloak:
@@ -12,16 +12,14 @@ services:
     restart: always
     ports:
       - 8190:8080
-    # volumes:
-    #   - ./data:/var/lib/mysql
     environment:
-      KEYCLOAK_USER: cgland
-      KEYCLOAK_PASSWORD: cgland2019
+      KEYCLOAK_USER: keycloak
+      KEYCLOAK_PASSWORD: keycloak
       DB_VENDOR: postgres
       DB_ADDR: postgres
       DB_PORT: 5432
       DB_DATABASE: keycloak
-      DB_USER: cgland
-      DB_PASSWORD: cgland2019
+      DB_USER: keycloak
+      DB_PASSWORD: keycloak
     networks:
-      - cgland_kecloak
+      - kecloak
