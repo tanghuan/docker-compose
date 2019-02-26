@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+  keycloak:
+    container_name: keycloak
+    image: jboss/keycloak:latest
+    restart: always
+    ports:
+      - 8190:8080
+    environment:
+      KEYCLOAK_USER: cgland
+      KEYCLOAK_PASSWORD: cgland2019
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_DATABASE: keycloak
+      DB_USER: cgland
+      DB_PASSWORD: cgland2019
+    networks:
+      - cgland_keycloak
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: cgland
+      POSTGRES_PASSWORD: cgland2019
+      POSTGRES_DB: keycloak
+    networks:
+      - cgland_keycloak
+
+networks:
+  cgland_keycloak:
