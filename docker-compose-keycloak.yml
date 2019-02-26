@@ -1,9 +1,9 @@
 version: '3.5'
 
 networks:
-  kecloak:
+  keycloak:
     external: true
-    name: kecloak
+    name: keycloak
 
 services:
   keycloak:
@@ -22,4 +22,4 @@ services:
       DB_USER: keycloak
       DB_PASSWORD: keycloak
     networks:
-      - kecloak
+      - keycloak
