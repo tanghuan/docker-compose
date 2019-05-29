@@ -1,0 +1,24 @@
+version: '3.5'
+
+networks:
+  nginx:
+    external: true
+    name: nginx
+    
+services:
+  nginx:
+    image: valian/docker-nginx-auto-ssl
+    container_name: nginx
+    restart: on-failure
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./ssl_data:/etc/resty-auto-ssl:Z
+      - ./conf.d/jitsi.tanghuan.com.conf:/etc/nginx/conf.d/jitsi.tanghuan.com.conf
+    environment:
+      FORCE_HTTPS: 'true'
+      ALLOWED_DOMAINS: 'tanghuan.com'
+      SITES: 'keycloak.tanghuan.com=keycloak:8080;pgadmin4.tanghuan.com=pgadmin4:80;auth.tanghuan.com=auth:9000'
+    networks:
+      - nginx
