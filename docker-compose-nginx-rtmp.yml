@@ -1,0 +1,10 @@
+version: '3.6'
+
+services:
+  nginx-rtmp:
+    container_name: nginx-rtmp
+    image: alfg/nginx-rtmp
+    restart: always
+    ports:
+      - 8100:80
+      - 1935:1935
